@@ -1,0 +1,4 @@
+.subckt Segment input output
+    L1 input output {L_segment}
+    C1 output 0  {C_segment}
+.ends Segment

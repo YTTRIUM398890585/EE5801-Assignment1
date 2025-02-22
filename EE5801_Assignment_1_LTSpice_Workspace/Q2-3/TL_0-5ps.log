@@ -1,0 +1,22 @@
+Circuit: * Lumped Transmission Line Model
+
+.OP point found by inspection.
+
+Date: Sun Feb 16 21:07:34 2025
+Total elapsed time: 1668.827 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 3326
+traniter = 3326
+tranpoints = 1664
+accept = 1645
+rejected = 19
+matrix size = 37552
+fillins = 0
+solver = Normal
+Thread vector: 14536.6/9221.0[8] 14798.3/11018.8[6] 2.0/2.6[1] 1179.3/201.8[8]  2592/500
+Matrix Compiler1: 1.79 MB object code size  548.5/526.0/[447.4]
+Matrix Compiler2: off  [1712.8]/1898.3/4036.9
+

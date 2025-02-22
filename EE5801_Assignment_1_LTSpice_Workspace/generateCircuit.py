@@ -131,32 +131,45 @@ C_PER_M = 4.2609e-11
 # )
 
 # Q2.3 ===========================
-generate_tl_circuit(
-    L_per_m=L_PER_M,
-    C_per_m=C_PER_M,
-    trise=5e-10,
-    length=0.6925,
-    epsilon_r=2.4,
-    fraction=15,
-    file_name="TL_0-5ns"
-)
+# generate_tl_circuit(
+#     L_per_m=L_PER_M,
+#     C_per_m=C_PER_M,
+#     trise=5e-10,
+#     length=0.6925,
+#     epsilon_r=2.4,
+#     fraction=15,
+#     file_name="TL_0-5ns"
+# )
 
-generate_tl_circuit(
-    L_per_m=L_PER_M,
-    C_per_m=C_PER_M,
-    trise=5e-10,
-    length=0.6925,
-    epsilon_r=2.4,
-    fraction=15,
-    file_name="TL_0-5ms"
-)
+# # edit the simulation time by hand after generating the circuit file
+# generate_tl_circuit(
+#     L_per_m=L_PER_M,
+#     C_per_m=C_PER_M,
+#     trise=5e-4,
+#     length=0.6925,
+#     epsilon_r=2.4,
+#     fraction=15,
+#     file_name="TL_0-5ms"
+# )
 
-generate_tl_circuit(
-    L_per_m=L_PER_M,
-    C_per_m=C_PER_M,
-    trise=5e-10,
-    length=0.6925,
-    epsilon_r=2.4,
-    fraction=15,
-    file_name="TL_0-5ps"
-)
+# generate_tl_circuit(
+#     L_per_m=L_PER_M,
+#     C_per_m=C_PER_M,
+#     trise=5e-13,
+#     length=0.6925,
+#     epsilon_r=2.4,
+#     fraction=15,
+#     file_name="TL_0-5ps"
+# )
+
+# Q2.4 ===========================
+# use this one but manually change the load
+# generate_tl_circuit(
+#     L_per_m=L_PER_M,
+#     C_per_m=C_PER_M,
+#     trise=5e-10,
+#     length=0.6925,
+#     epsilon_r=2.4,
+#     fraction=15,
+#     file_name="TL_lambda_over_15"
+# )
