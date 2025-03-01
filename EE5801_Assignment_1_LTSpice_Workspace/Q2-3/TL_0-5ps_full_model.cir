@@ -1,0 +1,10 @@
+* Full Model
+
+V1 Vsource 0 PULSE(0 10 0 5.0e-13 5.0e-13 5n)
+Rsource Vsource Vin 50
+T1 Vin 0 Vout Gout Td=3.58n Z0=121.3
+Rload Vout Gout 121.3
+
+* Simulation command
+.tran 20n
+.end

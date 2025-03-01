@@ -1,0 +1,29 @@
+* Lumped Transmission Line Model
+* Length: 0.6925m, Segments: 10
+* L/segment: 4.334e-08H, C/segment: 2.947e-12F
+
+.param L_segment=4.334421647741272e-08
+.param C_segment=2.9468562035455684e-12
+
+.include Segment.sub
+
+* Instantiation 10 segments
+X0 Vin N1 Segment
+X1 N1 N2 Segment
+X2 N2 N3 Segment
+X3 N3 N4 Segment
+X4 N4 N5 Segment
+X5 N5 N6 Segment
+X6 N6 N7 Segment
+X7 N7 N8 Segment
+X8 N8 N9 Segment
+X9 N9 Vout Segment
+
+* Source and load
+V1 Vsource 0 PULSE(0 10 0 5.0e-10 5.0e-10 5n)
+Rsource Vsource Vin 50
+Rload Vout 0 121.3
+
+* Simulation command
+.tran 20n
+.end

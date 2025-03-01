@@ -1,0 +1,6 @@
+.subckt Fb input output
+    Rs input mid 0.3
+    L1 mid output 1.208u
+    R1 mid output 1.082k
+    C1 mid output 1.6579p
+.ends Fb

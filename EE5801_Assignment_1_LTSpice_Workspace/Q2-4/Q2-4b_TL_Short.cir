@@ -1,0 +1,58 @@
+* Lumped Transmission Line Model
+* Length: 0.6925m, Segments: 38
+* L/segment: 1.156e-08H, C/segment: 7.858e-13F
+
+.param L_segment=1.155845772731006e-08
+.param C_segment=7.858283209454849e-13
+
+.include Segment.sub
+
+* Instantiation 38 segments
+X0 Vin N1 Segment
+X1 N1 N2 Segment
+X2 N2 N3 Segment
+X3 N3 N4 Segment
+X4 N4 N5 Segment
+X5 N5 N6 Segment
+X6 N6 N7 Segment
+X7 N7 N8 Segment
+X8 N8 N9 Segment
+X9 N9 N10 Segment
+X10 N10 N11 Segment
+X11 N11 N12 Segment
+X12 N12 N13 Segment
+X13 N13 N14 Segment
+X14 N14 N15 Segment
+X15 N15 N16 Segment
+X16 N16 N17 Segment
+X17 N17 N18 Segment
+X18 N18 N19 Segment
+X19 N19 N20 Segment
+X20 N20 N21 Segment
+X21 N21 N22 Segment
+X22 N22 N23 Segment
+X23 N23 N24 Segment
+X24 N24 N25 Segment
+X25 N25 N26 Segment
+X26 N26 N27 Segment
+X27 N27 N28 Segment
+X28 N28 N29 Segment
+X29 N29 N30 Segment
+X30 N30 N31 Segment
+X31 N31 N32 Segment
+X32 N32 N33 Segment
+X33 N33 N34 Segment
+X34 N34 N35 Segment
+X35 N35 N36 Segment
+X36 N36 N37 Segment
+
+* Last segment has output node to GND (Short)
+X37 N37 0 Segment
+
+* Source and load
+V1 Vsource 0 PULSE(0 10 0 5.0e-10 5.0e-10 5n)
+Rsource Vsource Vin 50
+
+* Simulation command
+.tran 50n
+.end
