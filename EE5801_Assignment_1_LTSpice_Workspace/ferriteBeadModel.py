@@ -30,16 +30,16 @@ def find_C(csv_file, Cmin, Cmax, Cstep):
     takes in csv and returns the capacitance value of the ferrite bead model
     """
 
-    # Load experimental data
+    # Load measured data
     # two columns [frequency in MHz, impedance in Ohm]
-    experimental_data = np.loadtxt(
+    measured_data = np.loadtxt(
         csv_file, delimiter=',', dtype=str, skiprows=1)
-    frequency_MHz_exp = experimental_data[:, 0]
-    impedance_Ohm_exp = experimental_data[:, 1]
+    frequency_MHz_mea = measured_data[:, 0]
+    impedance_Ohm_mea = measured_data[:, 1]
 
     # Convert to float
-    frequency_MHz_exp = frequency_MHz_exp.astype(float)
-    impedance_Ohm_exp = impedance_Ohm_exp.astype(float)
+    frequency_MHz_mea = frequency_MHz_mea.astype(float)
+    impedance_Ohm_mea = impedance_Ohm_mea.astype(float)
 
     # Loop through capacitance values and find the smallest MSE
     min_MSE = float('inf')
@@ -48,13 +48,13 @@ def find_C(csv_file, Cmin, Cmax, Cstep):
     for C in np.arange(Cmin, Cmax, Cstep):
         # Calculate impedance for each frequency
         impedance_Ohm_calc = []
-        for f in frequency_MHz_exp:
+        for f in frequency_MHz_mea:
             impedance_Ohm_calc.append(ferrite_bead_impedance(
                 1.208e-6, C, 1.082e3, 300e-3, f*1e6))
 
         # Calculate MSE
         MSE = np.square(np.subtract(
-            impedance_Ohm_exp, impedance_Ohm_calc)).mean()
+            impedance_Ohm_mea, impedance_Ohm_calc)).mean()
         # print('C:', C, 'MSE:', MSE)
         if MSE < min_MSE:
             min_MSE = MSE
@@ -62,22 +62,22 @@ def find_C(csv_file, Cmin, Cmax, Cstep):
 
     # Calculate impedance for best C
     impedance_Ohm_calc = []
-    for f in frequency_MHz_exp:
+    for f in frequency_MHz_mea:
         impedance_Ohm_calc.append(ferrite_bead_impedance(
             1.208e-6, best_C, 1.082e3, 300e-3, f*1e6))
 
-    # Plot calculated data and experimental data on the same graph
-    plot_str = 'Calculated Best C: ' + "{:.4f}".format(best_C * 1e12) + ' pF'
+    # Plot calculated data and measured data on the same graph
+    plot_str = 'Modeled C: ' + "{:.4f}".format(best_C * 1e12) + ' pF'
 
-    plt.plot(frequency_MHz_exp, impedance_Ohm_exp, label='Experimental')
-    plt.plot(frequency_MHz_exp, impedance_Ohm_calc, label=plot_str)
+    plt.plot(frequency_MHz_mea, impedance_Ohm_mea, label='Measured')
+    plt.plot(frequency_MHz_mea, impedance_Ohm_calc, label=plot_str)
     plt.xscale('log')
     plt.xlabel('Frequency (MHz)')
     plt.ylabel('Impedance (Ohm)')
-    plt.title('Impedance vs Frequency Experimental vs Calculated')
+    plt.title('Impedance vs Frequency')
     plt.legend()
     plt.grid(True, which="both")
-    plt.savefig('Ferrite_Bead.png')
+    plt.savefig('Q2-5a_Ferrite_Bead.png')
     plt.show()
 
     return best_C, min_MSE
